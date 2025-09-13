@@ -163,6 +163,55 @@
             font-size: 0.9rem;
         }
 
+        /* Футер с диаграммами */
+        footer {
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            padding: 25px;
+            margin-top: 30px;
+        }
+
+        .charts-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin-bottom: 20px;
+        }
+
+        .chart-container {
+            position: relative;
+            height: 250px;
+        }
+
+        .chart-title {
+            text-align: center;
+            margin-bottom: 10px;
+            color: #2c3e50;
+            font-weight: 600;
+        }
+
+        /* Кнопка */
+        .randomize-btn {
+            display: block;
+            margin: 20px auto 0;
+            padding: 10px 20px;
+            background: linear-gradient(-45deg, #3498db, #9b59b6, #e74c3c, #3498db);
+            background-size: 400% 400%;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: all 0.3s;
+            animation: gradient 15s ease infinite;
+        }
+
+        .randomize-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
         /* Адаптивность */
         @media (max-width: 768px) {
             .contacts {
@@ -170,8 +219,12 @@
                 align-items: center;
             }
 
-            .section {
+            .section, footer {
                 padding: 15px;
+            }
+
+            .charts-grid {
+                grid-template-columns: 1fr;
             }
         }
     </style>
@@ -180,8 +233,8 @@
 <body>
     <div class="container">
         <header>
-            <img src="https://www.meme-arsenal.com/memes/cde3b33da895db4797d866ee30918ec6.jpg" class="photo">
-            <h1>Борис Евгеньевич Крутой Танцор</h1>
+            <img src="https://www.meme-arsenal.com/memes/cde3b33da895db4797d866ee30918ec6.jpg" alt="Борис Евгеньевич Крутой Танцор" class="photo">
+            <h1>Борис Евгеньевич Крутой Тестировщик</h1>
             <h2>Разработчик ПО / QA Engineer</h2>
             <div class="contacts">
                 <a href="tel:+79991234567" class="contact-item">
@@ -268,6 +321,211 @@
                 <span class="skill">Load Testing</span>
             </div>
         </section>
+
+        <footer>
+            <h2 style="text-align: center; margin-bottom: 20px; color: #2c3e50;">Статистика и аналитика</h2>
+            <div class="charts-grid">
+                <div class="chart-container">
+                    <div class="chart-title">Линейная диаграмма</div>
+                    <canvas id="lineChart"></canvas>
+                </div>
+                <div class="chart-container">
+                    <div class="chart-title">Столбчатая диаграмма</div>
+                    <canvas id="barChart"></canvas>
+                </div>
+                <div class="chart-container">
+                    <div class="chart-title">Круговая диаграмма</div>
+                    <canvas id="pieChart"></canvas>
+                </div>
+                <div class="chart-container">
+                    <div class="chart-title">Радиальная диаграмма</div>
+                    <canvas id="radarChart"></canvas>
+                </div>
+                <div class="chart-container">
+                    <div class="chart-title">Пятиугольник</div>
+                    <canvas id="pentagonChart"></canvas>
+                </div>
+            </div>
+            <button class="randomize-btn" id="randomizeBtn">Случайные значения</button>
+        </footer>
     </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+        // Начальные данные
+        let lineData = [10, 30, 50, 70, 90];
+        let barData = [20, 40, 60, 80, 100];
+        let pieData = [15, 35, 55];
+        let radarData = [25, 45, 65, 85, 10];
+        let pentagonData = [30, 50, 70, 90, 10];
+
+        // Создание диаграмм
+        const lineCtx = document.getElementById('lineChart').getContext('2d');
+        const barCtx = document.getElementById('barChart').getContext('2d');
+        const pieCtx = document.getElementById('pieChart').getContext('2d');
+        const radarCtx = document.getElementById('radarChart').getContext('2d');
+        const pentagonCtx = document.getElementById('pentagonChart').getContext('2d');
+
+        const lineChart = new Chart(lineCtx, {
+            type: 'line',
+            data: {
+                labels: ['Янв', 'Фев', 'Мар', 'Апр', 'Май'],
+                datasets: [{
+                    label: 'Значения',
+                    data: lineData,
+                    borderColor: 'rgba(52, 152, 219, 1)',
+                    backgroundColor: 'rgba(52, 152, 219, 0.2)',
+                    borderWidth: 2,
+                    fill: true,
+                    tension: 0.4
+                }]
+            },
+            options: {
+                responsive: true,
+                plugins: {
+                    tooltip: {
+                        callbacks: {
+                            label: function(context) {
+                                return context.parsed.y + ' %';
+                            }
+                        }
+                    }
+                }
+            }
+        });
+
+        const barChart = new Chart(barCtx, {
+            type: 'bar',
+            data: {
+                labels: ['Янв', 'Фев', 'Мар', 'Апр', 'Май'],
+                datasets: [{
+                    label: 'Значения',
+                    data: barData,
+                    backgroundColor: 'rgba(155, 89, 182, 0.7)',
+                    borderColor: 'rgba(155, 89, 182, 1)',
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                responsive: true,
+                plugins: {
+                    tooltip: {
+                        callbacks: {
+                            label: function(context) {
+                                return context.parsed.y + ' %';
+                            }
+                        }
+                    }
+                }
+            }
+        });
+
+        const pieChart = new Chart(pieCtx, {
+            type: 'pie',
+            data: {
+                labels: ['A', 'B', 'C'],
+                datasets: [{
+                    label: 'Значения',
+                    data: pieData,
+                    backgroundColor: [
+                        'rgba(52, 152, 219, 0.7)',
+                        'rgba(155, 89, 182, 0.7)',
+                        'rgba(231, 76, 60, 0.7)'
+                    ],
+                    borderColor: [
+                        'rgba(52, 152, 219, 1)',
+                        'rgba(155, 89, 182, 1)',
+                        'rgba(231, 76, 60, 1)'
+                    ],
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                responsive: true,
+                plugins: {
+                    tooltip: {
+                        callbacks: {
+                            label: function(context) {
+                                return context.label + ': ' + context.parsed + ' %';
+                            }
+                        }
+                    }
+                }
+            }
+        });
+
+        const radarChart = new Chart(radarCtx, {
+            type: 'radar',
+            data: {
+                labels: ['A', 'B', 'C', 'D', 'E'],
+                datasets: [{
+                    label: 'Значения',
+                    data: radarData,
+                    backgroundColor: 'rgba(231, 76, 60, 0.2)',
+                    borderColor: 'rgba(231, 76, 60, 1)',
+                    borderWidth: 2
+                }]
+            },
+            options: {
+                responsive: true,
+                plugins: {
+                    tooltip: {
+                        callbacks: {
+                            label: function(context) {
+                                return context.parsed.r + ' %';
+                            }
+                        }
+                    }
+                }
+            }
+        });
+
+        const pentagonChart = new Chart(pentagonCtx, {
+            type: 'radar',
+            data: {
+                labels: ['A', 'B', 'C', 'D', 'E'],
+                datasets: [{
+                    label: 'Значения',
+                    data: pentagonData,
+                    backgroundColor: 'rgba(46, 204, 113, 0.2)',
+                    borderColor: 'rgba(46, 204, 113, 1)',
+                    borderWidth: 2
+                }]
+            },
+            options: {
+                responsive: true,
+                plugins: {
+                    tooltip: {
+                        callbacks: {
+                            label: function(context) {
+                                return context.parsed.r + ' %';
+                            }
+                        }
+                    }
+                }
+            }
+        });
+
+        // Кнопка для генерации случайных значений
+        document.getElementById('randomizeBtn').addEventListener('click', function() {
+            lineData = Array(5).fill().map(() => Math.floor(Math.random() * 100) + 1);
+            barData = Array(5).fill().map(() => Math.floor(Math.random() * 100) + 1);
+            pieData = Array(3).fill().map(() => Math.floor(Math.random() * 100) + 1);
+            radarData = Array(5).fill().map(() => Math.floor(Math.random() * 100) + 1);
+            pentagonData = Array(5).fill().map(() => Math.floor(Math.random() * 100) + 1);
+
+            lineChart.data.datasets[0].data = lineData;
+            barChart.data.datasets[0].data = barData;
+            pieChart.data.datasets[0].data = pieData;
+            radarChart.data.datasets[0].data = radarData;
+            pentagonChart.data.datasets[0].data = pentagonData;
+
+            lineChart.update();
+            barChart.update();
+            pieChart.update();
+            radarChart.update();
+            pentagonChart.update();
+        });
+    </script>
 </body>
 </html>
