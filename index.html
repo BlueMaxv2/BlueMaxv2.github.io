@@ -1,2 +1,246 @@
-<h1>Hello</h1>
-<h2 style="color:#fffafa">World!</h2>
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Резюме — Борис Евгеньевич Крутой Тестировщик</title>
+    <style>
+        /* Сброс стилей */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: #f5f7fa;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        /* Шапка */
+        header {
+            text-align: center;
+            padding: 30px 0;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            margin-bottom: 30px;
+        }
+
+        header h1 {
+            font-size: 2.2rem;
+            color: #2c3e50;
+            margin-bottom: 5px;
+        }
+
+        header h2 {
+            font-size: 1.4rem;
+            color: #7f8c8d;
+            margin-bottom: 15px;
+        }
+
+        /* Контакты */
+        .contacts {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            color: #3498db;
+            text-decoration: none;
+        }
+
+        .contact-item i {
+            margin-right: 5px;
+        }
+
+        /* Основной контент */
+        .section {
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            padding: 25px;
+            margin-bottom: 30px;
+        }
+
+        .section h2 {
+            color: #2c3e50;
+            margin-bottom: 20px;
+            font-size: 1.6rem;
+            border-bottom: 2px solid #3498db;
+            padding-bottom: 10px;
+        }
+
+        /* Опыт работы */
+        .job {
+            margin-bottom: 25px;
+        }
+
+        .job h3 {
+            color: #2c3e50;
+            font-size: 1.3rem;
+            margin-bottom: 5px;
+        }
+
+        .job .period {
+            color: #7f8c8d;
+            font-style: italic;
+            margin-bottom: 10px;
+        }
+
+        .job p {
+            margin-bottom: 10px;
+        }
+
+        /* Образование */
+        .education-item {
+            margin-bottom: 25px;
+        }
+
+        .education-item h3 {
+            color: #2c3e50;
+            font-size: 1.3rem;
+            margin-bottom: 5px;
+        }
+
+        .education-item .period {
+            color: #7f8c8d;
+            font-style: italic;
+            margin-bottom: 10px;
+        }
+
+        /* Навыки */
+        .skills-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .skill {
+            background-color: #e0f7fa;
+            color: #00838f;
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+        }
+
+        /* Адаптивность */
+        @media (max-width: 768px) {
+            .contacts {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .section {
+                padding: 15px;
+            }
+        }
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Борис Евгеньевич Крутой Тестировщик</h1>
+            <h2>Разработчик ПО / QA Engineer</h2>
+            <div class="contacts">
+                <a href="tel:+79991234567" class="contact-item">
+                    <i class="fas fa-phone"></i> +7 (999) 123-45-67
+                </a>
+                <a href="mailto:boris.test@email.com" class="contact-item">
+                    <i class="fas fa-envelope"></i> boris.test@email.com
+                </a>
+                <a href="https://t.me/boris_test" target="_blank" class="contact-item">
+                    <i class="fab fa-telegram"></i> @boris_test
+                </a>
+                <a href="https://github.com/boris-test" target="_blank" class="contact-item">
+                    <i class="fab fa-github"></i> github.com/boris-test
+                </a>
+            </div>
+        </header>
+
+        <section class="section">
+            <h2>Обо мне</h2>
+            <p>
+                Опытный разработчик с углубленными знаниями в области тестирования и автоматизации процессов.
+                Стремлюсь создавать качественный, надежный и масштабируемый код.
+                Люблю решать сложные задачи и постоянно развиваюсь в профессиональной сфере.
+            </p>
+        </section>
+
+        <section class="section">
+            <h2>Опыт работы</h2>
+
+            <div class="job">
+                <h3>Старший QA Engineer — Компания "ТехноИнновации"</h3>
+                <div class="period">Май 2022 — Настоящее время</div>
+                <p>Разработка и поддержка автотестов для веб-приложений, участие в проектировании тестовой архитектуры, наставничество младших специалистов.</p>
+                <div class="skills-list">
+                    <span class="skill">Python</span>
+                    <span class="skill">Selenium</span>
+                    <span class="skill">Pytest</span>
+                    <span class="skill">Docker</span>
+                    <span class="skill">CI/CD</span>
+                </div>
+            </div>
+
+            <div class="job">
+                <h3>QA Engineer — Компания "Цифровые Решения"</h3>
+                <div class="period">Июнь 2019 — Апрель 2022</div>
+                <p>Ручное и автоматизированное тестирование мобильных и веб-приложений, написание тестовой документации, интеграция тестов в процесс разработки.</p>
+                <div class="skills-list">
+                    <span class="skill">JavaScript</span>
+                    <span class="skill">Cypress</span>
+                    <span class="skill">Jira</span>
+                    <span class="skill">Postman</span>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2>Образование</h2>
+
+            <div class="education-item">
+                <h3>Московский Государственный Технический Университет</h3>
+                <div class="period">2014 — 2019</div>
+                <p>Специальность: Прикладная математика и информатика</p>
+            </div>
+
+            <div class="education-item">
+                <h3>Курсы по автоматизации тестирования — OTUS</h3>
+                <div class="period">2020</div>
+                <p>Сертификат по направлению "Автоматизация тестирования на Python"</p>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2>Навыки</h2>
+            <div class="skills-list">
+                <span class="skill">Тестирование ПО</span>
+                <span class="skill">Автоматизация тестов</span>
+                <span class="skill">Python</span>
+                <span class="skill">JavaScript</span>
+                <span class="skill">SQL</span>
+                <span class="skill">Git</span>
+                <span class="skill">Agile/Scrum</span>
+                <span class="skill">Linux</span>
+                <span class="skill">API Testing</span>
+                <span class="skill">Load Testing</span>
+            </div>
+        </section>
+    </div>
+</body>
+</html>
