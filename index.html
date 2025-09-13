@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Резюме — Борис Евгеньевич Крутой Тестировщик</title>
+    <title>Резюме — Борис Евгеньевич Крутой Танцор</title>
     <style>
         /* Сброс стилей */
         * {
@@ -25,26 +25,46 @@
             padding: 20px;
         }
 
-        /* Шапка */
+        /* Шапка с диско-эффектом */
         header {
             text-align: center;
             padding: 30px 0;
-            background-color: #fff;
+            background: linear-gradient(-45deg, #3498db, #9b59b6, #e74c3c, #3498db);
+            background-size: 400% 400%;
             border-radius: 10px;
             box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
             margin-bottom: 30px;
+            color: white;
+            animation: gradient 15s ease infinite;
+        }
+
+        @keyframes gradient {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
         }
 
         header h1 {
             font-size: 2.2rem;
-            color: #2c3e50;
             margin-bottom: 5px;
         }
 
         header h2 {
             font-size: 1.4rem;
-            color: #7f8c8d;
             margin-bottom: 15px;
+            opacity: 0.9;
+        }
+
+        /* Фото */
+        .photo {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 5px solid white;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            margin: 0 auto 20px;
+            display: block;
         }
 
         /* Контакты */
@@ -59,8 +79,14 @@
         .contact-item {
             display: flex;
             align-items: center;
-            color: #3498db;
+            color: white;
             text-decoration: none;
+            opacity: 0.9;
+            transition: opacity 0.3s;
+        }
+
+        .contact-item:hover {
+            opacity: 1;
         }
 
         .contact-item i {
@@ -154,7 +180,8 @@
 <body>
     <div class="container">
         <header>
-            <h1>Борис Евгеньевич Крутой Тестировщик</h1>
+            <img src="https://www.meme-arsenal.com/memes/cde3b33da895db4797d866ee30918ec6.jpg" class="photo">
+            <h1>Борис Евгеньевич Крутой Танцор</h1>
             <h2>Разработчик ПО / QA Engineer</h2>
             <div class="contacts">
                 <a href="tel:+79991234567" class="contact-item">
@@ -195,7 +222,6 @@
                     <span class="skill">Docker</span>
                     <span class="skill">CI/CD</span>
                 </div>
-            <img src="https://www.google.ru/url?sa=i&url=https%3A%2F%2Flosyash-library.fandom.com%2Fru%2Fwiki%2F%25D0%259A%25D0%25BE%25D0%25BF%25D0%25B0%25D1%2582%25D1%258B%25D1%2587&psig=AOvVaw0lt6bCyB-f9NpQWe_VuQlO&ust=1757838283873000&source=images&cd=vfe&opi=89978449&ved=0CBUQjRxqFwoTCOiSsYWo1Y8DFQAAAAAdAAAAABAE">
             </div>
 
             <div class="job">
