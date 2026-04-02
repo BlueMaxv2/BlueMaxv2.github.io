@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="ru">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Пустая страница</title>
+		<link rel="stylesheet" href="style.css" />
+	</head>
+	<body>
+
+		<main>
+			<section id="resume-section">
+				<h2>Мое резюме</h2>
+				<img id="photo" src="https://randomuser.me/api/portraits/men/34.jpg" alt="Фото" width="120" style="border-radius:50%;margin-bottom:10px;">
+				<div>
+					<span>Фамилия: <b id="surname">Кривенцов</b></span><br>
+					<span>Имя: <input type="text" id="name-input" value="Максим" required></span><br>
+					<span>Возраст: <input type="number" id="age-input" value="20" min="0" required></span><br>
+					<span>Пол: <input type="text" id="gender-input" value="М" maxlength="1" required></span><br>
+				</div>
+				<input type="text" id="surname-input" placeholder="Введите новую фамилию">
+				<button id="change-surname">Изменить фамилию</button>
+				<br><label><input type="checkbox" id="edu-checkbox"> Есть высшее образование</label>
+				<br><button id="submit-btn" style="display:none;">Меня возьмут</button>
+				<div id="resume-msg" style="margin-top:10px;color:#e74c3c;"></div>
+			</section>
+		</main>
+
+				<main>
+					<section>
+						<h2>Вычисление дискриминанта</h2>
+						<form id="d-form">
+							<label> a: <input type="number" id="a" required></label>
+							<label> b: <input type="number" id="b" required></label>
+							<label> c: <input type="number" id="c" required></label>
+							<button type="submit">Вычислить D</button>
+						</form>
+						<p id="d-result"></p>
+									</section>
+
+					<section>
+						<h2>Максимум двух чисел</h2>
+						<form id="max-form">
+							<label> a: <input type="number" id="max-a" required></label>
+							<label> b: <input type="number" id="max-b" required></label>
+							<button type="submit">Найти максимум</button>
+						</form>
+						<p id="max-result"></p>
+					</section>
+                    <section>
+						<h2>Индивидуальное задание 2</h2>
+							<button id="task2-btn">Вывести admin</button>
+							<p id="task2-result"></p>
+					</section>
+
+					<section>
+						<h2>Индивидуальное задание 3</h2>
+							<button id="task3-btn">Ввести возраст</button>
+							<p id="task3-result"></p>
+					</section>
+				</main>
+		<script>
+
+
+		document.addEventListener('DOMContentLoaded', function() {
+			document.getElementById('change-surname').onclick = function() {
+				const val = document.getElementById('surname-input').value.trim();
+				if(val) {
+					document.getElementById('surname').textContent = val;
+					document.getElementById('surname-input').value = '';
+				}
+			};
+			function validateForm() {
+				const name = document.getElementById('name-input').value.trim();
+				const age = document.getElementById('age-input').value.trim();
+				const gender = document.getElementById('gender-input').value.trim().toUpperCase();
+				let msg = '';
+				if(!/^[А-ЯA-Zа-яa-zЁё\-]+$/.test(name)) msg = 'Имя: только буквы';
+				else if(!/^\d+$/.test(age) || Number(age)<0) msg = 'Возраст: неотрицательное целое';
+				else if(!(gender==='М' || gender==='Ж')) msg = 'Пол: М или Ж';
+				document.getElementById('resume-msg').textContent = msg;
+				return !msg;
+			}
+
+			function checkShowSubmit() {
+				if(validateForm()) {
+					document.getElementById('submit-btn').style.display = '';
+				} else {
+					document.getElementById('submit-btn').style.display = 'none';
+				}
+			}
+
+			document.getElementById('name-input').oninput = checkShowSubmit;
+			document.getElementById('age-input').oninput = checkShowSubmit;
+			document.getElementById('gender-input').oninput = checkShowSubmit;
+
+	
+			document.getElementById('submit-btn').onclick = function() {
+				document.getElementById('edu-checkbox').disabled = true;
+				document.getElementById('resume-msg').textContent = 'Анкета отправлена!';
+			};
+		});
+		function calcD(a, b, c) {
+			return b * b - 4 * a * c;
+		}
+
+		function max(a, b) {
+			return a > b ? a : b;
+		}
+
+		document.getElementById('d-form').addEventListener('submit', function(e) {
+			e.preventDefault();
+			const a = parseFloat(document.getElementById('a').value);
+			const b = parseFloat(document.getElementById('b').value);
+			const c = parseFloat(document.getElementById('c').value);
+			const d = calcD(a, b, c);
+			document.getElementById('d-result').textContent = `D = ${d}`;
+		});
+
+		document.getElementById('max-form').addEventListener('submit', function(e) {
+			e.preventDefault();
+			const a = parseFloat(document.getElementById('max-a').value);
+			const b = parseFloat(document.getElementById('max-b').value);
+			const m = max(a, b);
+			document.getElementById('max-result').textContent = `Максимум: ${m}`;
+		});
+		document.getElementById('task2-btn').addEventListener('click', function() {
+			let name = "Максим";
+			let admin = name;
+			document.getElementById('task2-result').textContent = admin;
+		});
+
+		document.getElementById('task3-btn').addEventListener('click', function() {
+			let age;
+			while (true) {
+				age = prompt("Введите ваш возраст:");
+				if (age === null) continue;
+				if (confirm(`Ваш возраст: ${age}?`)) break;
+			}
+			document.getElementById('task3-result').textContent = `Возраст подтверждён: ${age}`;
+		});
+		</script>
+	</body>
+</html>

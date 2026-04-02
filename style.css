@@ -1,0 +1,28 @@
+body{
+    font-size: 18px;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    color: #2ed573;
+}
+button{
+    font-size: 14px;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    padding: 8px 18px;
+    border-radius: 6px;
+    color: #fff;
+    background-color: #70a1ff;
+    margin-top: 12px;
+
+}
+button:hover{
+    background-color: #1e90ff;
+}
+h2:hover{
+    color: #70a1ff;
+}
+h2{
+    margin: 10px;
+    border: #70a1ff dotted;
+    padding: 0;
+    width: 400px;
+}
