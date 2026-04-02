@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Личное резюме</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* Минимальные стили для плавной анимации появления */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+        .fade-in.visible {
+            opacity: 1;
+            transform: none;
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <nav class="nav">
+            <a href="index.html" class="nav__link">Главная</a>
+            <a href="second.html" class="nav__link nav__link--active">Резюме</a>
+        </nav>
+    </header>
+    <main>
+            <!-- Стрелочный индикатор -->
+            <section class="section fade-in" id="arrow-indicator-section">
+                <h3>Горизонтальный стрелочный индикатор</h3>
+                <div class="arrow-indicator-wrap">
+                    <input type="range" min="0" max="9" value="0" id="arrow-range" class="arrow-range" step="1" readonly>
+                    <div class="arrow-scale">
+                        <span>0</span>
+                        <span>1</span>
+                        <span>2</span>
+                        <span>3</span>
+                        <span>4</span>
+                        <span>5</span>
+                        <span>6</span>
+                        <span>7</span>
+                        <span>8</span>
+                        <span>9</span>
+                    </div>
+                </div>
+                <div class="arrow-keyboard">
+                    <div class="arrow-keys">
+                        <button type="button" class="arrow-key">0</button>
+                        <button type="button" class="arrow-key">1</button>
+                        <button type="button" class="arrow-key">2</button>
+                        <button type="button" class="arrow-key">3</button>
+                        <button type="button" class="arrow-key">4</button>
+                        <button type="button" class="arrow-key">5</button>
+                        <button type="button" class="arrow-key">6</button>
+                        <button type="button" class="arrow-key">7</button>
+                        <button type="button" class="arrow-key">8</button>
+                        <button type="button" class="arrow-key">9</button>
+                    </div>
+                </div>
+            </section>
+            <!-- Калькулятор -->
+            <section class="section fade-in" id="calculator-section">
+                <h3>Калькулятор</h3>
+                <div class="calculator">
+                    <div class="calc-inputs">
+                        <input type="text" id="calc-num1" class="calc-field" readonly placeholder="Число 1">
+                        <select id="calc-op" class="calc-op">
+                            <option value="+">+</option>
+                            <option value="-">-</option>
+                            <option value="*">*</option>
+                            <option value="/">/</option>
+                        </select>
+                        <input type="text" id="calc-num2" class="calc-field" readonly placeholder="Число 2">
+                    </div>
+                    <div class="calc-keyboard">
+                        <div class="calc-keys">
+                            <button type="button" class="calc-key">7</button>
+                            <button type="button" class="calc-key">8</button>
+                            <button type="button" class="calc-key">9</button>
+                            <button type="button" class="calc-key">4</button>
+                            <button type="button" class="calc-key">5</button>
+                            <button type="button" class="calc-key">6</button>
+                            <button type="button" class="calc-key">1</button>
+                            <button type="button" class="calc-key">2</button>
+                            <button type="button" class="calc-key">3</button>
+                            <button type="button" class="calc-key">0</button>
+                            <button type="button" class="calc-key calc-key-clear">C</button>
+                            <button type="button" class="calc-key calc-key-switch">⇄</button>
+                        </div>
+                    </div>
+                    <button class="btn" id="calc-calc">Посчитать</button>
+                    <div id="calc-result" class="calc-result" readonly></div>
+                </div>
+            </section>
+        <!-- Краткая информация о пользователе -->
+        <section class="section fade-in" id="about">
+            <h1>Иван Иванов</h1>
+            <h2>Frontend-разработчик</h2>
+            <p>Современный веб-разработчик, увлечённый созданием красивых и удобных интерфейсов. Открыт к новым возможностям и интересным проектам.</p>
+            <div class="about__actions">
+                <a href="#" class="btn" id="download-cv">Скачать резюме (PDF)</a>
+                <button class="btn btn--secondary" id="contact-scroll">Связаться со мной</button>
+            </div>
+        </section>
+
+        <!-- Опыт работы -->
+        <section class="section fade-in" id="experience">
+            <h3>Опыт работы</h3>
+            <div class="experience-list">
+                <div class="experience-item">
+                    <div class="experience-item__header">
+                        <span class="experience-item__role">Frontend Developer</span>
+                        <span class="experience-item__company">Tech Solutions</span>
+                        <span class="experience-item__dates">2023–2026</span>
+                    </div>
+                    <p>Разработка и поддержка SPA, внедрение современных UI-паттернов, оптимизация производительности.</p>
+                </div>
+                <div class="experience-item">
+                    <div class="experience-item__header">
+                        <span class="experience-item__role">Web Designer</span>
+                        <span class="experience-item__company">Creative Studio</span>
+                        <span class="experience-item__dates">2021–2023</span>
+                    </div>
+                    <p>Дизайн и верстка лендингов, работа с заказчиками, создание прототипов.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Образование -->
+        <section class="section fade-in" id="education">
+            <h3>Образование</h3>
+            <div class="education-list">
+                <div class="education-item">
+                    <span class="education-item__degree">Бакалавр, Прикладная информатика</span>
+                    <span class="education-item__school">МГУ, 2017–2021</span>
+                </div>
+                <div class="education-item">
+                    <span class="education-item__degree">Курс: Современный JavaScript</span>
+                    <span class="education-item__school">Coursera, 2022</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Навыки -->
+        <section class="section fade-in" id="skills">
+            <h3>Навыки</h3>
+            <ul class="skills-list">
+                <li>HTML5, CSS3, JavaScript (ES6+)</li>
+                <li>React, REST API</li>
+                <li>Figma, Photoshop</li>
+                <li>Адаптивная верстка, Flexbox, Grid</li>
+                <li>Командная работа, коммуникация</li>
+                <li>Тайм-менеджмент, креативность</li>
+            </ul>
+        </section>
+
+        <!-- Форма обратной связи -->
+        <section class="section fade-in" id="contact">
+            <h3>Связаться со мной</h3>
+            <form class="contact-form" id="contact-form" novalidate>
+                <div class="form-group">
+                    <label for="name">Имя</label>
+                    <input type="text" id="name" name="name" required>
+                    <span class="form-error" id="name-error"></span>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" name="email" required>
+                    <span class="form-error" id="email-error"></span>
+                </div>
+                <div class="form-group">
+                    <label for="message">Сообщение</label>
+                    <textarea id="message" name="message" required></textarea>
+                    <span class="form-error" id="message-error"></span>
+                </div>
+                <button type="submit" class="btn">Отправить</button>
+            </form>
+        </section>
+    </main>
+    <footer class="footer">
+        <p>&copy; 2026 Иван Иванов</p>
+        <a href="index.html" class="footer__link">На главную</a>
+    </footer>
+    <script>
+        // ===== Горизонтальный стрелочный индикатор =====
+        (function() {
+            const range = document.getElementById('arrow-range');
+            const section = document.getElementById('arrow-indicator-section');
+            document.querySelectorAll('.arrow-key').forEach(btn => {
+                btn.addEventListener('click', function() {
+                    const val = parseInt(this.textContent);
+                    range.value = val;
+                    if(val > 5) {
+                        section.style.background = '#ff7675';
+                    } else {
+                        section.style.background = '';
+                    }
+                });
+            });
+        })();
+        // ===== Калькулятор =====
+        (function() {
+            let activeField = 'num1';
+            const num1 = document.getElementById('calc-num1');
+            const num2 = document.getElementById('calc-num2');
+            const result = document.getElementById('calc-result');
+            const op = document.getElementById('calc-op');
+            // Фокус по клику
+            num1.addEventListener('click', () => activeField = 'num1');
+            num2.addEventListener('click', () => activeField = 'num2');
+            // Клавиши
+            document.querySelectorAll('.calc-key').forEach(btn => {
+                btn.addEventListener('click', function() {
+                    if(this.classList.contains('calc-key-clear')) {
+                        if(activeField==='num1') num1.value = '';
+                        else num2.value = '';
+                        result.textContent = '';
+                        result.style.background = '';
+                        return;
+                    }
+                    if(this.classList.contains('calc-key-switch')) {
+                        activeField = (activeField==='num1') ? 'num2' : 'num1';
+                        return;
+                    }
+                    if(/[0-9]/.test(this.textContent)) {
+                        if(activeField==='num1') num1.value += this.textContent;
+                        else num2.value += this.textContent;
+                    }
+                });
+            });
+            // Кнопка "Посчитать"
+            document.getElementById('calc-calc').addEventListener('click', function() {
+                let a = parseFloat(num1.value);
+                let b = parseFloat(num2.value);
+                let o = op.value;
+                let res = '';
+                if(isNaN(a) || isNaN(b)) {
+                    result.textContent = 'Введите оба числа';
+                    result.style.background = '#ffeaa7';
+                    return;
+                }
+                switch(o) {
+                    case '+': res = a + b; break;
+                    case '-': res = a - b; break;
+                    case '*': res = a * b; break;
+                    case '/': res = b!==0 ? a / b : '∞'; break;
+                }
+                if(typeof res === 'number' && res > 15) {
+                    result.textContent = 'число>15';
+                    result.style.background = '#ff7675';
+                } else {
+                    result.textContent = res;
+                    result.style.background = '';
+                }
+            });
+        })();
+    // Плавный скролл к форме
+    document.getElementById('contact-scroll').addEventListener('click', function(e) {
+        e.preventDefault();
+        document.getElementById('contact').scrollIntoView({ behavior: 'smooth' });
+    });
+
+    // Заглушка для скачивания резюме
+    document.getElementById('download-cv').addEventListener('click', function(e) {
+        e.preventDefault();
+        alert('PDF-резюме пока недоступно.');
+    });
+
+    // Базовая валидация формы
+    document.getElementById('contact-form').addEventListener('submit', function(e) {
+        e.preventDefault();
+        let valid = true;
+        // Очистка ошибок
+        ['name', 'email', 'message'].forEach(function(field) {
+            document.getElementById(field + '-error').textContent = '';
+        });
+        // Проверка имени
+        const name = document.getElementById('name').value.trim();
+        if (!name) {
+            document.getElementById('name-error').textContent = 'Введите имя';
+            valid = false;
+        }
+        // Проверка email
+        const email = document.getElementById('email').value.trim();
+        if (!/^\S+@\S+\.\S+$/.test(email)) {
+            document.getElementById('email-error').textContent = 'Введите корректный email';
+            valid = false;
+        }
+        // Проверка сообщения
+        const message = document.getElementById('message').value.trim();
+        if (!message) {
+            document.getElementById('message-error').textContent = 'Введите сообщение';
+            valid = false;
+        }
+        if (valid) {
+            alert('Спасибо за сообщение!');
+            this.reset();
+        }
+    });
+
+    // Анимация появления секций при прокрутке
+    function onScrollFadeIn() {
+        document.querySelectorAll('.fade-in').forEach(function(el) {
+            const rect = el.getBoundingClientRect();
+            if (rect.top < window.innerHeight - 60) {
+                el.classList.add('visible');
+            }
+        });
+    }
+    window.addEventListener('scroll', onScrollFadeIn);
+    window.addEventListener('load', onScrollFadeIn);
+    </script>
+</body>
+</html>
